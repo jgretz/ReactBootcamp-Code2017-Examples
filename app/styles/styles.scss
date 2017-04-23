@@ -1,12 +1,11 @@
-/* Styles */
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
-  min-width: 230px;
-  max-width: 550px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 300;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+ul,
+li {
+  margin: 10px 7px;
+  padding: 0;
 }
