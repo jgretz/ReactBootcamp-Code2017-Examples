@@ -1,9 +1,13 @@
+import _ from 'lodash';
 import React, {Component} from 'react';
+import axios from 'axios';
 import autobind from 'class-autobind';
 
 import Search from './search';
 import List from './list';
-import allRecipes from './recipes';
+
+const RECIPE_URL = 'http://food2fork.com/api/search';
+const KEY = 'c24fefd7bef74599fcedc27cd6435fac';
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,8 +21,19 @@ export default class Home extends Component {
 
   // actions
   search(string) {
-    this.setState({
-      recipes: allRecipes.filter(r => r.name.toUpperCase().includes(string.toUpperCase())),
+    axios.get(`https://crossorigin.me/${RECIPE_URL}?key=${KEY}&q=${string}`)
+    .then(response => {
+      const recipes = response.data.recipes.map((r, index) =>
+        ({
+          key: index,
+          name: r.title,
+          url: r.source_url,
+        })
+      );
+
+      this.setState({
+        recipes: _.sortBy(recipes, r => r.name),
+      });
     });
   }
 
