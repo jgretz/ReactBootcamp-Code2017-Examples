@@ -24,7 +24,7 @@ export default class Search extends Component {
   // render
   render() {
     return (
-      <div>
+      <div className="search">
         <input value={this.state.searchText} onChange={this.handleSearchTextChange} />
         &nbsp;
         <input type="button" value="Search" onClick={this.handleSearchClick} />
