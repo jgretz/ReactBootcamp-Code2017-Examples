@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default ({recipes = []}) =>
+const render = ({recipes}) =>
 (
   <ul>
     {
@@ -14,3 +15,10 @@ export default ({recipes = []}) =>
     }
   </ul>
 );
+
+const mapStateToProps = state =>
+({
+  recipes: state.recipes,
+});
+
+export default connect(mapStateToProps)(render);

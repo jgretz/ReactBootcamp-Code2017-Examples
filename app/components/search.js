@@ -1,34 +1,35 @@
 import React, {Component} from 'react';
 import autobind from 'class-autobind';
+import {connect} from 'react-redux';
 
-export default class Search extends Component {
+import {updateSearchText, searchForRecipes} from '../actions';
+
+class Search extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-
-    this.state = {
-      searchText: '',
-    };
   }
 
   // actions
-  handleSearchTextChange(e) {
-    this.setState({searchText: e.target.value});
-  }
-
   handleSearchClick() {
-    this.props.search(this.state.searchText);
-    this.setState({searchText: ''});
+    this.props.searchForRecipes(this.props.searchText);
   }
 
   // render
   render() {
     return (
       <div className="search">
-        <input value={this.state.searchText} onChange={this.handleSearchTextChange} />
+        <input value={this.props.searchText} onChange={this.props.updateSearchText} />
         &nbsp;
         <input type="button" value="Search" onClick={this.handleSearchClick} />
       </div>
     );
   }
 }
+
+const mapStateToProps = state =>
+({
+  searchText: state.searchText,
+});
+
+export default connect(mapStateToProps, {updateSearchText, searchForRecipes})(Search);

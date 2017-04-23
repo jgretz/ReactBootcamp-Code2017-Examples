@@ -350,13 +350,7 @@
       "off",
       "multiline"
     ],
-    "react/jsx-handler-names": [
-      "error",
-      {
-        "eventHandlerPrefix": "handle",
-        "eventHandlerPropPrefix": "on"
-      }
-    ],
+    "react/jsx-handler-names": 0,
     "react/jsx-indent": [
       "error",
       2
